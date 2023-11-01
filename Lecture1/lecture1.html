@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: gilroy;
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #heading {
+            display: flex;
+        }
+
+        button {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="heading">
+            <p class="p">0</p>
+        </div>
+        <button class="increment">+</button>
+        <button class="Decrement">-</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
