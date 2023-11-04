@@ -45,7 +45,7 @@ function addExpensToTotal() {
   const allExpenseHTML = allExpenses.map(expense => createListItem(expense));
 
   const joinedallExpenseHTML = allExpenseHTML.join('');
-  console.log(joinedallExpenseHTML);
+  // console.log(joinedallExpenseHTML);
   expenseTable.innerHTML = joinedallExpenseHTML;
 }
 
@@ -54,21 +54,50 @@ const element = document.querySelector(".btnAddExpense");
 // Listen on click event
 element.addEventListener("click", addExpensToTotal, false);
 
-function createListItem({ items, amount , moment }) {
+
+//Controlling function
+
+//Get Date String
+function getDataString(moment) {
+  return moment.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
+
+// Delete Items
+function deleteItem(dateValue) {
+  console.log("Delete Items", dateValue)
+
+  for (let i = 0; i < allExpenses.length; i++) {
+    if (allExpenses[i].moment.valueOf() === dateValue) {
+      console.log('Item Found', allExpenses);
+    }
+  }
+}
+
+
+function createListItem({ items, amount, moment }) {
   return ` 
 
   <ul class="list-group py-3">
     <li class="list-group-item d-flex align-content-center justify-content-between px-5">
       <div class="d-flex flex-column">
            ${amount}
-           <small class="text-muted">${moment.toLocaleDateString('en-US', {year: 'numeric', month:'long', day: 'numeric'})}</small>
+           <small class="text-muted">${getDataString(moment)}</small>
       </div>
 
       <div>
           <span class="px-5">
             ${items}
           </span>
-          <button id="btn-delet" type="button">
+          <button 
+          type="button"
+          id="btn-delet"
+          onclick="deleteItem(${moment.valueOf()})"
+          >
               <i class="ri-delete-bin-line"></i>
           </button>
       </div>
